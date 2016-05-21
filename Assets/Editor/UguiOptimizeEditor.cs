@@ -3,7 +3,8 @@ using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UguiOptimizeEditor : Editor {
+public class UguiOptimizeEditor : MonoBehaviour
+{
     [MenuItem("GameObject/UI/Image")]
     public static void CreatImage()
     {
@@ -13,7 +14,8 @@ public class UguiOptimizeEditor : Editor {
     }
 
     [MenuItem("GameObject/UI/Text")]
-    public static void CreatText() {
+    public static void CreatText()
+    {
         GameObject textObj = new GameObject("Text", typeof(Text));
         Text text = textObj.GetComponent<Text>();
         text.raycastTarget = false;
@@ -29,7 +31,7 @@ public class UguiOptimizeEditor : Editor {
 
         if (Selection.activeTransform == null || Selection.activeTransform.GetComponent<RectTransform>() == null)
         {
-            Canvas canvas =(Canvas)FindObjectOfType(typeof(Canvas));
+            Canvas canvas = (Canvas)FindObjectOfType(typeof(Canvas));
             GameObject canvasObj = null;
             if (canvas == null)
             {
@@ -51,12 +53,15 @@ public class UguiOptimizeEditor : Editor {
             objTransform.SetParent(Selection.activeTransform);
         }
         objTransform.localPosition = Vector2.zero;
+        objTransform.localScale = Vector2.one;
     }
 
-    private static void checkRootEventSystem() {
+    private static void checkRootEventSystem()
+    {
         GameObject[] rootObjs = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
 
-        foreach (GameObject obj in rootObjs) {
+        foreach (GameObject obj in rootObjs)
+        {
             if (obj.GetComponent<EventSystem>() != null)
                 return;
         }
