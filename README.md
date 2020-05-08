@@ -1,6 +1,6 @@
-# UnityOptimizeTool
-Unity editor optimize tool
+# How to use?
+Clone this project at your Editor folder.
 
-#20160426
-First version, import UguiOptimizeEditor.
-Overwirte image and text create function without raycastTarget.
+## Feature
+* Default disable raycastTarget for Image, Text.
+* Default disable rich Text.
